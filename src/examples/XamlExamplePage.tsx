@@ -7,6 +7,7 @@ import {
   TextBlock,
   Button,
   Hyperlink,
+  HyperlinkButton,
   Run,
   ToggleSwitch,
   ComboBox,
@@ -17,6 +18,12 @@ import {
   NavigationView,
   NavigationViewItem,
   FontIcon,
+  AutoSuggestBox,
+  CheckBox,
+  DropDownButton,
+  FlyoutPlacementMode,
+  PersonPicture,
+  Slider,
 } from 'react-native-xaml';
 
 export const XamlExamplePage: React.FunctionComponent<{}> = () => {
@@ -77,6 +84,8 @@ export const XamlExamplePage: React.FunctionComponent<{}> = () => {
     <FontIcon glyph="&#xE790;" />
   </NavigationViewItem>
 </NavigationView>`;
+  const example9jsx = '';
+  const example10jsx = '<CheckBox />';
 
   return (
     <Page
@@ -112,6 +121,11 @@ export const XamlExamplePage: React.FunctionComponent<{}> = () => {
           </Hyperlink>
           <Run text=" repository." />
         </TextBlock>
+      </Example>
+      <Example title="A simple HyperlinkButton." code={example4jsx}>
+        <HyperlinkButton navigateUri="https://github.com/microsoft/react-native-gallery">
+          <TextBlock text="React Native Gallery" />
+        </HyperlinkButton>
       </Example>
       <Example title="A simple ComboBox." code={example5jsx}>
         <ComboBox text="ComboBox">
@@ -153,7 +167,7 @@ export const XamlExamplePage: React.FunctionComponent<{}> = () => {
         <View style={{height: 10}} />
         <TextBlock text={`${menuFlyoutOption} is selected.`} />
       </Example>
-      <Example title="A simple Navigation View." code={example8jsx}>
+      <Example title="A simple Navigation View." code={example9jsx}>
         <NavigationView style={{height: 200, width: 180}}>
           <NavigationViewItem content={{string: 'Navigation Item 1'}}>
             <FontIcon glyph="&#xE790;" />
@@ -162,6 +176,29 @@ export const XamlExamplePage: React.FunctionComponent<{}> = () => {
             <FontIcon glyph="&#xE790;" />
           </NavigationViewItem>
         </NavigationView>
+      </Example>
+      <Example
+        title="An Search Box built from an AutoSuggestBox."
+        code={example8jsx}>
+        <AutoSuggestBox placeholderText="Type a component name" />
+      </Example>
+      <Example title="A simple CheckBox." code={example10jsx}>
+        <CheckBox />
+      </Example>
+      <Example title="A simple DropDownButton." code={example10jsx}>
+        <DropDownButton content={{string: 'Drop Down Menu'}}>
+          <MenuFlyout placement={FlyoutPlacementMode.Bottom}>
+            <MenuFlyoutItem text="Item 1" />
+            <MenuFlyoutItem text="Item 2" />
+            <MenuFlyoutItem text="Item 3" />
+          </MenuFlyout>
+        </DropDownButton>
+      </Example>
+      <Example title="A simple PersonPicture." code={example10jsx}>
+        <PersonPicture displayName="Jane Doe" />
+      </Example>
+      <Example title="A simple Slider." code={example10jsx}>
+        <Slider minimum={0} maximum={100} stepFrequency={1} />
       </Example>
     </Page>
   );
