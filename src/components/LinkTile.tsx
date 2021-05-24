@@ -1,7 +1,8 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {Hyperlink} from '../components/Hyperlink';
+//import {Hyperlink} from '../components/Hyperlink';
 import {useTheme} from '@react-navigation/native';
+import {Hyperlink, Run} from 'react-native-xaml';
 
 const createStyles = (colors: any) =>
   StyleSheet.create({
@@ -27,7 +28,9 @@ export function LinkTile(props: {
     <View style={styles.hyperlinkTile}>
       <Text style={styles.hyperlinkTileTitle}>{props.title}</Text>
       {props.links.map((hyp) => (
-        <Hyperlink key={hyp.label} label={hyp.label} url={hyp.url} />
+        <Hyperlink key={hyp.label} navigateUri={hyp.url}>
+          <Run text={hyp.label} />
+        </Hyperlink>
       ))}
     </View>
   );
