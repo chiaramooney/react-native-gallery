@@ -11,12 +11,12 @@
   xmlns:iot="http://schemas.microsoft.com/appx/manifest/iot/windows10"
   IgnorableNamespaces="uap mp uap3 uap6 uap4 uap2 iot">
 
- <Identity
+  <Identity
     Name="Microsoft.ReactNativeGallery"
     Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US"
-    Version="1.0.1.0" />
+    Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="92a2ad66-6238-420f-9f50-a5bd0955913f" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="92fd90fa-8cfe-4d55-b911-2e8d231920da" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>React Native Gallery</DisplayName>
@@ -49,7 +49,7 @@
     </Application>
   </Applications>
 
- <Capabilities>
-  <Capability Name="internetClientServer"/>
- </Capabilities>
+  <Capabilities>
+    <Capability Name="internetClientServer" />
+  </Capabilities>
 </Package>

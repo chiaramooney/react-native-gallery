@@ -12,7 +12,7 @@
   "dependencies": {
     "@react-native-community/checkbox": "^0.5.7",
     "@react-native-community/clipboard": "^1.5.1",
-    "@react-native-community/datetimepicker": "^3.3.0",
+    "@react-native-community/datetimepicker": "^3.5.1",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-native-community/progress-view": "^1.2.4",
     "@react-native-community/slider": "^4.0.0-rc.3",
@@ -24,7 +24,7 @@
     "@terrylinla/react-native-sketch-canvas": "creambyemute/react-native-sketch-canvas",
     "lowlight": "^1.17.0",
     "react": "16.13.1",
-    "react-native": "^0.64.0-rc.1",
+    "react-native": "0.0.0-7e05480cc",
     "react-native-config": "luggit/react-native-config",
     "react-native-device-info": "^7.3.1",
     "react-native-gesture-handler": "JaneaSystems/react-native-gesture-handler#windows",
@@ -35,8 +35,8 @@
     "react-native-screens": "^2.9.0",
     "react-native-sensitive-info": "6.0.0-alpha.9",
     "react-native-tts": "ak1394/react-native-tts",
-    "react-native-webview": "^11.3.1",
-    "react-native-windows": "0.64.4",
+    "react-native-webview": "11.6.2",
+    "react-native-windows": "0.65.0-preview.1",
     "react-native-xaml": "^0.0.16",
     "reactn": "^2.2.7"
   },
