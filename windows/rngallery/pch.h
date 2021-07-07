@@ -28,4 +28,5 @@
 #include <winrt/NativeClipboard.h>
 #include <winrt/ReactNativePicker.h>
 #include <winrt/ReactNativeWebView.h>
+#include <winrt/Microsoft.UI.Xaml.XamlTypeInfo.h>
 using namespace winrt::Windows::Foundation;
