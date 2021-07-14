@@ -24,6 +24,8 @@ import {
   FlyoutPlacementMode,
   PersonPicture,
   Slider,
+  SymbolIcon,
+  Symbol,
 } from 'react-native-xaml';
 
 export const XamlExamplePage: React.FunctionComponent<{}> = () => {
@@ -84,8 +86,19 @@ export const XamlExamplePage: React.FunctionComponent<{}> = () => {
     <FontIcon glyph="&#xE790;" />
   </NavigationViewItem>
 </NavigationView>`;
-  const example9jsx = '';
+  const example9jsx = `<AutoSuggestBox placeholderText="Type a component name">
+  <SymbolIcon symbol={Symbol.Find} />
+</AutoSuggestBox>`;
   const example10jsx = '<CheckBox />';
+  const example11jsx = `<DropDownButton content={{string: 'Drop Down Menu'}}>
+  <MenuFlyout placement={FlyoutPlacementMode.Bottom}>
+    <MenuFlyoutItem text="Item 1" />
+    <MenuFlyoutItem text="Item 2" />
+    <MenuFlyoutItem text="Item 3" />
+  </MenuFlyout>
+</DropDownButton>`;
+  const example12jsx = '<PersonPicture displayName="Jane Doe" />';
+  const example13jsx = '<Slider minimum={0} maximum={100} stepFrequency={1} /';
 
   return (
     <Page
@@ -167,7 +180,7 @@ export const XamlExamplePage: React.FunctionComponent<{}> = () => {
         <View style={{height: 10}} />
         <TextBlock text={`${menuFlyoutOption} is selected.`} />
       </Example>
-      <Example title="A simple Navigation View." code={example9jsx}>
+      <Example title="A simple Navigation View." code={example8jsx}>
         <NavigationView style={{height: 200, width: 180}}>
           <NavigationViewItem content={{string: 'Navigation Item 1'}}>
             <FontIcon glyph="&#xE790;" />
@@ -179,13 +192,15 @@ export const XamlExamplePage: React.FunctionComponent<{}> = () => {
       </Example>
       <Example
         title="An Search Box built from an AutoSuggestBox."
-        code={example8jsx}>
-        <AutoSuggestBox placeholderText="Type a component name" />
+        code={example9jsx}>
+        <AutoSuggestBox placeholderText="Type a component name">
+          <SymbolIcon symbol={Symbol.Find} />
+        </AutoSuggestBox>
       </Example>
       <Example title="A simple CheckBox." code={example10jsx}>
         <CheckBox />
       </Example>
-      <Example title="A simple DropDownButton." code={example10jsx}>
+      <Example title="A simple DropDownButton." code={example11jsx}>
         <DropDownButton content={{string: 'Drop Down Menu'}}>
           <MenuFlyout placement={FlyoutPlacementMode.Bottom}>
             <MenuFlyoutItem text="Item 1" />
@@ -194,10 +209,10 @@ export const XamlExamplePage: React.FunctionComponent<{}> = () => {
           </MenuFlyout>
         </DropDownButton>
       </Example>
-      <Example title="A simple PersonPicture." code={example10jsx}>
-        <PersonPicture displayName="Jane Doe" />
+      <Example title="A simple PersonPicture." code={example12jsx}>
+        <PersonPicture displayName="Jane Doe" style={{height: 30, width: 30}} />
       </Example>
-      <Example title="A simple Slider." code={example10jsx}>
+      <Example title="A simple Slider." code={example13jsx}>
         <Slider minimum={0} maximum={100} stepFrequency={1} />
       </Example>
     </Page>
