@@ -5,6 +5,7 @@ import {ThemeMode, RawThemeContext, ThemeSetterContext} from './themes/Theme';
 import {Picker} from '@react-native-picker/picker';
 import {HyperlinkButton} from 'react-native-xaml';
 import {useTheme} from '@react-navigation/native';
+import ThemeHandler from 'react-native-theme-handler';
 
 const createStyles = (colors: any) =>
   StyleSheet.create({
@@ -56,12 +57,13 @@ const SettingContainer = (props: {
 
 export const SettingsPage: React.FunctionComponent<{}> = () => {
   const theme = React.useContext(RawThemeContext);
-  const setTheme = React.useContext(ThemeSetterContext);
+  const setJSTheme = React.useContext(ThemeSetterContext);
   const {colors} = useTheme();
   const styles = createStyles(colors);
   const PickerValueChanged = (value: ThemeMode) => {
     console.log('Setting theme to: ' + value);
-    setTheme(value);
+    setJSTheme(value);
+    ThemeHandler.setTheme(value);
   };
   return (
     <View style={styles.container}>

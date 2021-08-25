@@ -5,6 +5,7 @@ import {
   TouchableHighlight,
   Text,
   useColorScheme,
+  NativeModules,
 } from 'react-native';
 import {
   NavigationContainer,
@@ -18,6 +19,7 @@ import {
 import RNGalleryList from './RNGalleryList';
 import LightTheme from './themes/LightTheme';
 import DarkTheme from './themes/DarkTheme';
+//import {ThemeHandler} from 'react-native-theme-handler';
 import {
   ThemeMode,
   RawThemeContext,
@@ -114,10 +116,10 @@ function renderScreen(i: number) {
 }
 
 export default function App() {
+  //ThemeHandler.setTheme('light');
   const [rawtheme, setRawTheme] = React.useState<ThemeMode>('system');
   const colorScheme = useColorScheme();
   const theme = rawtheme === 'system' ? colorScheme! : rawtheme;
-
   return (
     <ThemeSetterContext.Provider value={setRawTheme}>
       <RawThemeContext.Provider value={rawtheme}>

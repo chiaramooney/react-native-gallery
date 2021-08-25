@@ -6189,9 +6189,12 @@ react-native-sensitive-info@6.0.0-alpha.9:
   resolved "https://registry.yarnpkg.com/react-native-sensitive-info/-/react-native-sensitive-info-6.0.0-alpha.9.tgz#b488fab715d36efdf80b377a21545cfe888ab8d2"
   integrity sha512-W2R1gUHgBAmy+wVl0BvA7s01SqqTitnG4Sdj2zmck0OS5a54kq+pTnXRqDljMa2NQs4Mue2IHyvd+Tf0X1ZL6Q==
 
-react-native-track-player@JaneaSystems/react-native-track-player#windows_cpp:
+react-native-theme-handler@../react-native-theme-handler:
+  version "1.0.0"
+
+react-native-track-player@JaneaSystems/react-native-track-player#windows_cpp2:
   version "1.2.5"
-  resolved "https://codeload.github.com/JaneaSystems/react-native-track-player/tar.gz/f011ae25e07a4e9a46c111ba4de75828c7abbbf9"
+  resolved "https://codeload.github.com/JaneaSystems/react-native-track-player/tar.gz/5838b8516c4ffb024abff928c7cc2b4f8159d768"
 
 react-native-tts@ak1394/react-native-tts:
   version "4.0.0"

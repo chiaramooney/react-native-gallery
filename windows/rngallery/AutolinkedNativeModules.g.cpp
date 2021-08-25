@@ -33,6 +33,9 @@
 // Includes from react-native-sensitive-info
 #include <winrt/RNSensitiveInfoCPP.h>
 
+// Includes from react-native-theme-handler
+#include <winrt/ReactNativeThemeHandler.h>
+
 // Includes from react-native-track-player
 #include <winrt/RNTrackPlayer.h>
 
@@ -70,6 +73,8 @@ void RegisterAutolinkedNativeModulePackages(winrt::Windows::Foundation::Collecti
     packageProviders.Append(winrt::RNPrint::ReactPackageProvider());
     // IReactPackageProviders from react-native-sensitive-info
     packageProviders.Append(winrt::RNSensitiveInfoCPP::ReactPackageProvider());
+    // IReactPackageProviders from react-native-theme-handler
+    packageProviders.Append(winrt::ReactNativeThemeHandler::ReactPackageProvider());
     // IReactPackageProviders from react-native-track-player
     packageProviders.Append(winrt::RNTrackPlayer::ReactPackageProvider());
     // IReactPackageProviders from react-native-tts
