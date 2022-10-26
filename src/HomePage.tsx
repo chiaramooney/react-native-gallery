@@ -1,7 +1,7 @@
 'use strict';
 import {StyleSheet, View, Text, Pressable} from 'react-native';
 import React from 'react';
-import {useTheme} from '@react-navigation/native';
+import {useTheme, useIsFocused} from '@react-navigation/native';
 import RNGalleryList from './RNGalleryList';
 import {ScrollView} from 'react-native';
 import {ScreenWrapper} from './components/ScreenWrapper';
@@ -57,9 +57,9 @@ const HomeContainer = (props: {heading: string; children: React.ReactNode}) => {
   const {colors} = useTheme();
   const styles = createStyles(colors);
   return (
-    <View accessibilityLabel={props.heading + 'components'} focusable={true}>
+    <View accessibilityLabel={props.heading + 'components'}>
       <Text style={styles.heading}>{props.heading}</Text>
-      <View style={styles.homeContainer}>{props.children}</View>
+      <View style={styles.homeContainer} children={props.children} />
     </View>
   );
 };
@@ -67,6 +67,8 @@ const HomeContainer = (props: {heading: string; children: React.ReactNode}) => {
 const HomeComponentTile = (props: {index: number; navigation}) => {
   const {colors} = useTheme();
   const styles = createStyles(colors);
+  const isScreenFocused = useIsFocused();
+
   return (
     <Pressable
       accessibilityRole="button"
@@ -95,7 +97,9 @@ const HomeComponentTile = (props: {index: number; navigation}) => {
       ]}
       onPress={() => {
         props.navigation.navigate(RNGalleryList[props.index].key);
-      }}>
+      }}
+      accessible={isScreenFocused}
+      focusable={isScreenFocused}>
       <Text style={styles.icon}>{RNGalleryList[props.index].icon}</Text>
       <Text style={[styles.text, {paddingRight: 10}]}>
         {RNGalleryList[props.index].key}
@@ -145,9 +149,10 @@ const RenderPageContent = ({navigation}) => {
   }
   return (
     <ScrollView>
-      <HomeContainer heading="Basic Input">
-        {RenderHomeComponentTiles(basicInput, navigation)}
-      </HomeContainer>
+      <HomeContainer
+        heading="Basic Input"
+        children={RenderHomeComponentTiles(basicInput, navigation)}
+      />
       <HomeContainer heading="Date and Time">
         {RenderHomeComponentTiles(dateAndTime, navigation)}
       </HomeContainer>
@@ -173,15 +178,20 @@ const RenderPageContent = ({navigation}) => {
 export const HomePage: React.FunctionComponent<{}> = ({navigation}) => {
   const {colors} = useTheme();
   const styles = createStyles(colors);
+  const isScreenFocused = useIsFocused();
 
-  return (
-    <ScreenWrapper style={styles.container}>
-      <Text style={styles.title}>Welcome to React Native Gallery!</Text>
-      <Text style={styles.description}>
-        React Native Gallery is a React Native Windows application which
-        displays the range of React Native components with Windows support.
-      </Text>
-      <RenderPageContent navigation={navigation} />
-    </ScreenWrapper>
+  return isScreenFocused ? (
+    <View>
+      <ScreenWrapper style={styles.container}>
+        <Text style={styles.title}>Welcome to React Native Gallery!</Text>
+        <Text style={styles.description}>
+          React Native Gallery is a React Native Windows application which
+          displays the range of React Native components with Windows support.
+        </Text>
+        <RenderPageContent navigation={navigation} />
+      </ScreenWrapper>
+    </View>
+  ) : (
+    <View />
   );
 };

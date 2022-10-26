@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {useTheme} from '@react-navigation/native';
+import {useTheme, useIsFocused} from '@react-navigation/native';
 import {HyperlinkButton} from 'react-native-xaml';
 
 const createStyles = (colors: any) =>
@@ -24,14 +24,20 @@ export function LinkTile(props: {
 }) {
   const {colors} = useTheme();
   const styles = createStyles(colors);
+  const isScreenFocused = useIsFocused();
   return (
-    <View style={styles.hyperlinkTile}>
+    <View
+      style={styles.hyperlinkTile}
+      importantForAccessibility={
+        isScreenFocused ? 'auto' : 'no-hide-descendants'
+      }>
       <Text style={styles.hyperlinkTileTitle}>{props.title}</Text>
       {props.links.map((hyp) => (
         <HyperlinkButton
           key={hyp.label}
           content={{string: hyp.label}}
           navigateUri={hyp.url}
+          isEnabled={isScreenFocused}
         />
       ))}
     </View>

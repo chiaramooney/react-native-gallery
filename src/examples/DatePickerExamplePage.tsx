@@ -3,10 +3,13 @@ import React, {useState} from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {Example} from '../components/Example';
 import {Page} from '../components/Page';
+import {useIsFocused} from '@react-navigation/native';
+import {View} from 'react-native';
 
 export const DatePickerExamplePage: React.FunctionComponent<{}> = () => {
   const [date1] = useState(new Date());
   const [date2] = useState(new Date());
+  const isScreenFocused = useIsFocused();
 
   const textExample1 =
     '<DateTimePicker value={date} mode="date" style={{width: 200, opacity: 1, height: 50}}/>';
@@ -37,23 +40,31 @@ export const DatePickerExamplePage: React.FunctionComponent<{}> = () => {
         },
       ]}>
       <Example title="A simple DatePicker." code={textExample1}>
-        <DateTimePicker
-          value={date1}
-          onChange={() => {}}
-          mode="date"
-          style={{width: 200, opacity: 1, height: 50}}
-        />
+        {isScreenFocused ? (
+          <DateTimePicker
+            value={date1}
+            onChange={() => {}}
+            mode="date"
+            style={{width: 200, opacity: 1, height: 50}}
+          />
+        ) : (
+          <View />
+        )}
       </Example>
       <Example
         title="A DatePicker with day of week formatted and first day of week adjusted."
         code={textExample2}>
-        <DateTimePicker
-          value={date2}
-          mode="date"
-          style={{width: 200, opacity: 1, height: 50}}
-          dayOfWeekFormat={'{dayofweek.abbreviated(3)}'}
-          firstDayOfWeek={1}
-        />
+        {isScreenFocused ? (
+          <DateTimePicker
+            value={date2}
+            mode="date"
+            style={{width: 200, opacity: 1, height: 50}}
+            dayOfWeekFormat={'{dayofweek.abbreviated(3)}'}
+            firstDayOfWeek={1}
+          />
+        ) : (
+          <View />
+        )}
       </Example>
     </Page>
   );

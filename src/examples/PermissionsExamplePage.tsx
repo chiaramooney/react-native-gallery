@@ -14,7 +14,7 @@ import {
 import {AndroidPermissionMap} from 'react-native-permissions/dist/typescript/permissions.android';
 import {IOSPermissionMap} from 'react-native-permissions/dist/typescript/permissions.ios';
 import {WindowsPermissionMap} from 'react-native-permissions/dist/typescript/permissions.windows';
-import {useTheme} from '@react-navigation/native';
+import {useTheme, useIsFocused} from '@react-navigation/native';
 
 const getResultString = (result: PermissionStatus) => {
   switch (result) {
@@ -38,6 +38,7 @@ type PermissionsMap =
 
 export const PermissionsExamplePage: React.FunctionComponent<{}> = () => {
   const {colors} = useTheme();
+  const isScreenFocused = useIsFocused();
 
   const exampleJsx = `<FlatList
   data={entries}
@@ -109,7 +110,13 @@ export const PermissionsExamplePage: React.FunctionComponent<{}> = () => {
           paddingBottom: 10,
         }}>
         {status === 'granted' ? (
-          <Button onPress={() => {}} color="#737373" title="Granted" />
+          <Button
+            onPress={() => {}}
+            color="#737373"
+            title="Granted"
+            accessible={isScreenFocused}
+            focusable={isScreenFocused}
+          />
         ) : (
           <Button
             onPress={async () => {
@@ -124,6 +131,8 @@ export const PermissionsExamplePage: React.FunctionComponent<{}> = () => {
             title="Request"
             disabled={status === 'unavailable' || status === 'blocked'}
             accessibilityLabel={'Request' + perm}
+            accessible={isScreenFocused}
+            focusable={isScreenFocused}
           />
         )}
         <Text style={{fontWeight: 'bold', paddingLeft: 10, color: colors.text}}>

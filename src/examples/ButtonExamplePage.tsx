@@ -3,11 +3,12 @@ import {Button} from 'react-native';
 import React, {useState} from 'react';
 import {Example} from '../components/Example';
 import {Page} from '../components/Page';
-import {useTheme} from '@react-navigation/native';
+import {useTheme, useIsFocused} from '@react-navigation/native';
 
 export const ButtonExamplePage: React.FunctionComponent<{}> = () => {
   const [title, setTitle] = useState(0);
   const {colors} = useTheme();
+  const isScreenFocused = useIsFocused();
 
   const example1jsx = '<Button title="Button" onPress={() => {}} />';
   const example2jsx =
@@ -43,6 +44,8 @@ export const ButtonExamplePage: React.FunctionComponent<{}> = () => {
           title="Button"
           accessibilityLabel={'example simple button1'}
           onPress={() => {}}
+          accessible={isScreenFocused}
+          focusable={isScreenFocused}
         />
       </Example>
       <Example title="A colored Button." code={example2jsx}>
@@ -51,6 +54,8 @@ export const ButtonExamplePage: React.FunctionComponent<{}> = () => {
           color={colors.primary}
           accessibilityLabel={'example colored button2'}
           onPress={() => {}}
+          accessible={isScreenFocused}
+          focusable={isScreenFocused}
         />
       </Example>
       <Example title="A disabled Button." code={example3jsx}>
@@ -59,6 +64,8 @@ export const ButtonExamplePage: React.FunctionComponent<{}> = () => {
           accessibilityLabel={'example disabled button3'}
           disabled={true}
           onPress={() => {}}
+          accessible={isScreenFocused}
+          focusable={isScreenFocused}
         />
       </Example>
       <Example title="A counter Button." code={example4jsx}>
@@ -69,6 +76,8 @@ export const ButtonExamplePage: React.FunctionComponent<{}> = () => {
           onPress={() => {
             setTitle(title + 1);
           }}
+          accessible={isScreenFocused}
+          focusable={isScreenFocused}
         />
       </Example>
     </Page>

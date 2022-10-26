@@ -3,10 +3,11 @@ import React from 'react';
 import {Example} from '../components/Example';
 import {Page} from '../components/Page';
 import {Picker} from '@react-native-picker/picker';
-import {useTheme} from '@react-navigation/native';
+import {useTheme, useIsFocused} from '@react-navigation/native';
 
 export const PickerExamplePage: React.FunctionComponent<{}> = () => {
   const {colors} = useTheme();
+  const isScreenFocused = useIsFocused();
 
   const example1jsx = `<Picker style={{height: 50, width: 200}}>
   <Picker.Item label="Option 1" value="Option 1"/>
@@ -43,7 +44,8 @@ export const PickerExamplePage: React.FunctionComponent<{}> = () => {
       <Example title="A simple Picker." code={example1jsx}>
         <Picker
           style={{height: 50, width: 200}}
-          itemStyle={{color: colors.text}}>
+          itemStyle={{color: colors.text}}
+          enabled={isScreenFocused}>
           <Picker.Item label="Option 1" value="Option 1" />
           <Picker.Item label="Option 2" value="Option 2" />
           <Picker.Item label="Option 3" value="Option 3" />

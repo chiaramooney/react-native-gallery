@@ -4,13 +4,14 @@ import React, {useState, useRef} from 'react';
 import {Example} from '../components/Example';
 import {Page} from '../components/Page';
 import {Flyout} from 'react-native-windows';
-import {useTheme} from '@react-navigation/native';
+import {useTheme, useIsFocused} from '@react-navigation/native';
 
 export const FlyoutExamplePage: React.FunctionComponent<{}> = () => {
   const [showFlyout1, setShowFlyout1] = useState(false);
   const [showFlyout2, setShowFlyout2] = useState(false);
   const [showFlyout3, setShowFlyout3] = useState(false);
   const [showFlyout4, setShowFlyout4] = useState(false);
+  const isScreenFocused = useIsFocused();
 
   const myRef = useRef();
   const {colors} = useTheme();
@@ -154,7 +155,10 @@ export const FlyoutExamplePage: React.FunctionComponent<{}> = () => {
             setShowFlyout1(true);
           }}
           activeOpacity={0.2}
-          underlayColor={colors.border}>
+          underlayColor={colors.border}
+          importantForAccessibility={
+            isScreenFocused ? 'auto' : 'no-hide-descendants'
+          }>
           <Text style={{color: colors.text}}>Open Popup</Text>
         </TouchableHighlight>
         <Flyout
@@ -205,7 +209,10 @@ export const FlyoutExamplePage: React.FunctionComponent<{}> = () => {
             setShowFlyout2(true);
           }}
           activeOpacity={0.2}
-          underlayColor={colors.border}>
+          underlayColor={colors.border}
+          importantForAccessibility={
+            isScreenFocused ? 'auto' : 'no-hide-descendants'
+          }>
           <Text style={{color: colors.text}}>Open Popup</Text>
         </TouchableHighlight>
         <Flyout
@@ -257,7 +264,10 @@ export const FlyoutExamplePage: React.FunctionComponent<{}> = () => {
             setShowFlyout3(true);
           }}
           activeOpacity={0.2}
-          underlayColor={colors.border}>
+          underlayColor={colors.border}
+          importantForAccessibility={
+            isScreenFocused ? 'auto' : 'no-hide-descendants'
+          }>
           <Text style={{color: colors.text}}>Open Popup</Text>
         </TouchableHighlight>
         <Flyout
@@ -313,7 +323,10 @@ export const FlyoutExamplePage: React.FunctionComponent<{}> = () => {
           }}
           ref={myRef}
           activeOpacity={0.2}
-          underlayColor={colors.border}>
+          underlayColor={colors.border}
+          importantForAccessibility={
+            isScreenFocused ? 'auto' : 'no-hide-descendants'
+          }>
           <Text style={{color: colors.text}}>Open Popup</Text>
         </TouchableHighlight>
         <Flyout

@@ -7,7 +7,11 @@ import {
   Pressable,
 } from 'react-native';
 import {PlatformColor} from 'react-native';
-import {useNavigation, DrawerActions} from '@react-navigation/native';
+import {
+  useNavigation,
+  DrawerActions,
+  useIsFocused,
+} from '@react-navigation/native';
 import {useIsDrawerOpen} from '@react-navigation/drawer';
 
 const styles = StyleSheet.create({
@@ -41,9 +45,14 @@ const styles = StyleSheet.create({
 // @ts-ignore
 export function ScreenWrapper({children}) {
   const navigation = useNavigation();
+  const isScreenFocused = useIsFocused();
 
   return (
-    <View style={styles.container}>
+    <View
+      style={styles.container}
+      importantForAccessibility={
+        isScreenFocused ? 'auto' : 'no-hide-descendants'
+      }>
       <Pressable
         accessibilityRole="button"
         accessibilityLabel="Navigation bar"

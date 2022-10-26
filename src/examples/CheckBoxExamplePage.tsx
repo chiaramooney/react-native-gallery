@@ -3,10 +3,12 @@ import React from 'react';
 import CheckBox from '@react-native-community/checkbox';
 import {Example} from '../components/Example';
 import {Page} from '../components/Page';
-import {useTheme} from '@react-navigation/native';
+import {useTheme, useIsFocused} from '@react-navigation/native';
 
 export const CheckBoxExamplePage: React.FunctionComponent<{}> = () => {
   const {colors} = useTheme();
+  const isScreenFocused = useIsFocused();
+
   return (
     <Page
       title="Checkbox"
@@ -25,10 +27,10 @@ export const CheckBoxExamplePage: React.FunctionComponent<{}> = () => {
         },
       ]}>
       <Example title="A simple Checkbox." code={'<CheckBox />'}>
-        <CheckBox />
+        <CheckBox disabled={!isScreenFocused} />
       </Example>
       <Example title="A checked Checkbox." code={'<CheckBox value={true}/>'}>
-        <CheckBox value={true} />
+        <CheckBox value={true} disabled={!isScreenFocused} />
       </Example>
       <Example title="A disabled Checkbox." code={'<CheckBox disabled />'}>
         <CheckBox disabled />
@@ -41,22 +43,34 @@ export const CheckBoxExamplePage: React.FunctionComponent<{}> = () => {
       <Example
         title="A colored check Checkbox."
         code={'<CheckBox onCheckColor={colors.primary} value={true} />'}>
-        <CheckBox onCheckColor={colors.primary} value={true} />
+        <CheckBox
+          onCheckColor={colors.primary}
+          value={true}
+          disabled={!isScreenFocused}
+        />
       </Example>
       <Example
         title="A Checkbox with colored border when checked and focused."
         code={'<CheckBox onTintColor={colors.primary} value={true} />'}>
-        <CheckBox onTintColor={colors.primary} value={true} />
+        <CheckBox
+          onTintColor={colors.primary}
+          value={true}
+          disabled={!isScreenFocused}
+        />
       </Example>
       <Example
         title="A Checkbox colored when checked."
         code={'<CheckBox onFillColor={colors.primary} value={true} />'}>
-        <CheckBox onFillColor={colors.primary} value={true} />
+        <CheckBox
+          onFillColor={colors.primary}
+          value={true}
+          disabled={!isScreenFocused}
+        />
       </Example>
       <Example
         title="A Checkbox colored when unchecked."
         code={'<CheckBox tintColor={colors.primary} />'}>
-        <CheckBox tintColor={colors.primary} />
+        <CheckBox tintColor={colors.primary} disabled={!isScreenFocused} />
       </Example>
     </Page>
   );

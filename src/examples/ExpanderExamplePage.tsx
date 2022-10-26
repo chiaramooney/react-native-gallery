@@ -3,7 +3,7 @@ import {Text, View} from 'react-native';
 import React, {useState} from 'react';
 import {Example} from '../components/Example';
 import {Page} from '../components/Page';
-import {useTheme} from '@react-navigation/native';
+import {useTheme, useIsFocused} from '@react-navigation/native';
 import {Expander} from '@fluentui-react-native/experimental-expander';
 import CheckBox from '@react-native-community/checkbox';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -51,6 +51,7 @@ export const ExpanderExamplePage: React.FunctionComponent<{}> = () => {
 </Expander>`;
 
   const [date1] = useState(new Date(0));
+  const isScreenFocused = useIsFocused();
 
   return (
     <Page
@@ -71,13 +72,22 @@ export const ExpanderExamplePage: React.FunctionComponent<{}> = () => {
         },
       ]}>
       <Example title="A simple Expander." code={example1jsx}>
-        <Expander collapsedHeight={50} expandedHeight={125}>
+        <Expander
+          collapsedHeight={50}
+          expandedHeight={125}
+          enabled={isScreenFocused}>
           <Text>Text in the header</Text>
           <Text>Text in the content</Text>
         </Expander>
       </Example>
-      <Example title="An Expander with multiple lines." code={example2jsx}>
-        <Expander collapsedHeight={75} expandedHeight={200}>
+      <Example
+        title="An Expander with multiple lines."
+        code={example2jsx}
+        enabled={isScreenFocused}>
+        <Expander
+          collapsedHeight={75}
+          expandedHeight={200}
+          enabled={isScreenFocused}>
           <View>
             <Text>Text in the header</Text>
             <Text>Second line of text in the header</Text>
@@ -92,19 +102,24 @@ export const ExpanderExamplePage: React.FunctionComponent<{}> = () => {
         <Expander
           collapsedHeight={50}
           expandedHeight={125}
-          expandDirection={'up'}>
+          expandDirection={'up'}
+          enabled={isScreenFocused}>
           <Text>Text in the header</Text>
           <Text>Text in the content</Text>
         </Expander>
       </Example>
-      <Example title="A stylized Expander." code={example4jsx}>
+      <Example
+        title="A stylized Expander."
+        code={example4jsx}
+        enabled={isScreenFocused}>
         <Expander
           collapsedHeight={50}
           expandedHeight={125}
           headerBackground={colors.border}
           headerForegroundPointerOver={colors.primary}
           contentBackground={colors.primary}
-          contentBorderBrush={colors.background}>
+          contentBorderBrush={colors.background}
+          enabled={isScreenFocused}>
           <Text>Text in the header</Text>
           <Text>Text in the content</Text>
         </Expander>
@@ -112,7 +127,10 @@ export const ExpanderExamplePage: React.FunctionComponent<{}> = () => {
       <Example
         title="An Expander with interactive controls."
         code={example5jsx}>
-        <Expander collapsedHeight={50} expandedHeight={125}>
+        <Expander
+          collapsedHeight={50}
+          expandedHeight={125}
+          enabled={isScreenFocused}>
           <View
             style={{
               flexDirection: 'row',
